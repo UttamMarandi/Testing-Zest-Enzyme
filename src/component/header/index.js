@@ -3,9 +3,11 @@ import "./styles.css";
 
 const Header = () => {
   return (
-    <header>
-      <div className="wrap">
-        <div className="logo">Test Enzyme</div>
+    <header className="headerComponent" data-test="header">
+      <div className="wrap ">
+        <div className="logo" data-test="logo">
+          Test Enzyme
+        </div>
       </div>
     </header>
   );
