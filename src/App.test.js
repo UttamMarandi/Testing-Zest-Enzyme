@@ -39,4 +39,19 @@ describe("App Component", () => {
     const component = wrapper.find(`[data-test="appComponent"]`);
     expect(component.length).toBe(1);
   });
+
+  it("exampleMethod_updatesState Method should update state as expected", () => {
+    const classInstance = wrapper.instance(); //create an instance of the class
+    classInstance.exampleMethod_updatesState();
+    //fire the method
+    const newState = classInstance.state.hideBtn;
+    expect(newState).toBe(true);
+  });
+
+  it("exampleMethod_returnsAValue Method should return value as expected", () => {
+    const classInstance = wrapper.instance();
+    const newValue = classInstance.exampleMethod_returnsAValue(6);
+    //we are passing value 6, our function increments the number ,so we are expecting 7
+    expect(newValue).toBe(7);
+  });
 });

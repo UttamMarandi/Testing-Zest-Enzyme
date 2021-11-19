@@ -22,19 +22,28 @@ describe("SharedButton Component", () => {
     });
   });
 
-  // describe("Renders", () => {
-  //   let wrapper;
-  //   beforeEach(() => {
-  //     const props = {
-  //       buttonText: "Example Button Text",
-  //       emitEvent: () => {},
-  //     };
-  //     wrapper = setUp(props);
-  //   });
-  // });
+  describe("Renders", () => {
+    let wrapper;
+    let mockFunc;
+    beforeEach(() => {
+      mockFunc = jest.fn();
+      const props = {
+        buttonText: "Example Button Text",
+        emitEvent: mockFunc,
+      };
+      wrapper = setUp(props);
+    });
+  });
 
-  // it("Should render a button", () => {
-  //   const button = wrapper.find(`[data-test = "buttonComponent"]`);
-  //   expect(button.length).toBe(1);
-  // });
+  it("Should render a button", () => {
+    const button = wrapper.find(`[data-test = "buttonComponent"]`);
+    expect(button.length).toBe(1);
+  });
+  it("Should emit callback on click event", () => {
+    const button = wrapper.find(`[data-test="buttonComponent"]`);
+    button.simulate("click");
+    //simulate method simulates the click event
+    const callback = mockFunc.mock.calls.length;
+    expect(callback).toBe(1);
+  });
 });
