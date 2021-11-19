@@ -18,7 +18,7 @@ const tempArr = [
   },
 ];
 
-class App extends Component() {
+class App extends Component {
   constructor(props) {
     super(props);
     this.fetch = this.fetch.bind(this);
@@ -33,7 +33,7 @@ class App extends Component() {
       emitEvent: this.fetch,
     };
     return (
-      <div className="App">
+      <div className="App" data-test="appComponent">
         <Header />
         <section className="main">
           <Headline

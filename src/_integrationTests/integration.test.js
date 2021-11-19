@@ -13,7 +13,7 @@ describe("fetchPosts action", () => {
     moxios.uninstall();
   });
   it("Should update the store correctly", () => {
-    const expectedProps = [
+    const expectedState = [
       {
         title: "Example title 1",
         desc: "Some text 1",
@@ -28,16 +28,18 @@ describe("fetchPosts action", () => {
       },
     ];
     const store = testStore();
+
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response: expectedProps,
+        response: expectedState,
       });
     });
+
     return store.dispatch(fetchPosts()).then(() => {
       const newState = store.getState();
-      expect(newState.posts).toBe(expectedProps);
+      expect(newState.posts).toBe(expectedState);
     });
   });
 });

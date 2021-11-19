@@ -1,10 +1,10 @@
 import { types } from "../../actions/types";
-import postsReduser from "./reducer";
+import postsReducer from "./reducer";
 
 describe("Posts Reducer", () => {
   it("Should return default state", () => {
     //we are checking for what are the default states for that reducer
-    const newState = postsReduser(undefined, {}); //undefined is the current state, and {} is the action
+    const newState = postsReducer(undefined, {}); //undefined is the current state, and {} is the action
     expect(newState).toEqual([]);
     //test is failing for now as postsReducer return null instead of on object
   });
@@ -14,7 +14,7 @@ describe("Posts Reducer", () => {
       { title: "Tests 1" },
       { title: "Tests 1" },
     ];
-    const newState = postsReduser(undefined, {
+    const newState = postsReducer(undefined, {
       type: types.GET_POSTS,
       payload: posts,
     });
