@@ -1,4 +1,7 @@
 import { checkPropTypes } from "prop-types";
+import { applyMiddleware, createStore } from "redux";
+import rootReducer from "../src/reducers/rootReducer";
+import { middlewares } from "../src/createStore";
 
 export const findByTestAttr = (component, attr) => {
   let wrapper;
@@ -14,4 +17,11 @@ export const checkProps = (component, expectedProps) => {
     component.name
   );
   return propsErr;
+};
+
+export const testStore = (initialState) => {
+  const createStoreWithMiddleware = applyMiddleware(...middlewares)(
+    createStore
+  );
+  return createStoreWithMiddleware(rootReducer, initialState);
 };

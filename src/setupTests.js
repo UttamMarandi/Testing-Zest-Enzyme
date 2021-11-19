@@ -11,3 +11,6 @@ Enzyme.configure({
 //adapter: new EnzymeAdapter(),
 //this import is no longor working
 //
+
+//Unit Tests
+//These are test that tests a unit of code withoud any external dependencies
